@@ -1,0 +1,14 @@
+build:
+  version: 2016-03-14 # version of the build schema.
+  steps:
+    builder:
+      name: 0mq_sync_build
+      dockerfile: Dockerfile.build
+      artifacts:
+        - /go/src/app/main
+
+    packager:
+      name: 0mq_sync
+      dockerfile: Dockerfile.package
+      depends_on: 
+        - builder
